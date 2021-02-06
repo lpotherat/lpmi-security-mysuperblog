@@ -8,7 +8,7 @@ class author_repository extends base_repository{
     }
 
 
-    public function getById($id):array{
+    public function getById($id):?array{
         return $this->queryToSingle("SELECT * FROM author WHERE id = '$id'");
     }
 

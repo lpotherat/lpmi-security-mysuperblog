@@ -11,8 +11,15 @@ class post_repository extends base_repository{
         return $this->queryToArray('SELECT * FROM post ORDER BY id ASC');
     }
 
+    public function getById($id):?array{
+        return $this->queryToSingle("SELECT * FROM post WHERE id = $id");
+    }
+
     public function addPost(array $post):?int{
         return $this->insert('post',$post) ?? null;
+    }
+    public function updatePost(int $id,array $post):?int{
+        return $this->update('post',$id,$post) ?? null;
     }
     public function deletePost(int $id):void{
         $this->delete('post',$id);

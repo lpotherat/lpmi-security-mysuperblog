@@ -23,6 +23,14 @@ abstract class base_repository{
         $this->context->db->query("INSERT INTO $table ($keys) VALUES ($values) ");
         return $this->context->db->lastInsertId() ?? null;
     }
+    protected function update(string $table, int $id, array $data):void{
+        $upd = [];
+        foreach($data as $key=>$value){
+            $value = addslashes($value);
+            $upd[] = " $key = '$value' ";
+        }
+        $this->context->db->query("UPDATE $table SET ".implode(',',$upd));
+    }
 
     
     protected function delete(string $table, int $id):void{

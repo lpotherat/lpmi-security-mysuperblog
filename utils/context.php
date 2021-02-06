@@ -57,6 +57,15 @@ class context {
                     "categoryId"	INTEGER DEFAULT NULL,
                     PRIMARY KEY("id" AUTOINCREMENT)
                 )');
+                $db->query ('CREATE TABLE "comment" (
+                    "id"	INTEGER NOT NULL,
+                    "dateAdded"	INTEGER,
+                    "commenter" TEXT,
+                    "content"	TEXT,
+                    "approved"	INTEGER NOT NULL DEFAULT 0,
+                    "postId"	INTEGER NOT NULL,
+                    PRIMARY KEY("id" AUTOINCREMENT)
+                )');
 
                 $db->query('INSERT INTO author (login,password,firstname,lastname,role) VALUES ("admin","admin","Administrator","","admin")');
 
