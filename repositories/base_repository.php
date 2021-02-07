@@ -11,10 +11,12 @@ abstract class base_repository{
     }
 
     protected function queryToSingle($query):?array{
-        return $this->context->db->query($query)->fetchAll()[0] ?? null;
+        $rs = $this->context->db->query($query);
+        return $rs ? $rs->fetchAll()[0] ?? null : null;
     }
     protected function queryToArray($query):array{
-        return $this->context->db->query($query)->fetchAll();
+        $rs = $this->context->db->query($query);
+        return $rs ? $this->context->db->query($query)->fetchAll() : [];
     }
 
     protected function insert(string $table, array $data):?int{
