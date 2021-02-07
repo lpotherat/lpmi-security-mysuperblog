@@ -10,7 +10,7 @@ $posts = $post_repo->getAllPosts();
 ?><html>
 <body>
 <h1>Bienvenue sur mon super blog !</h1>
-
+<form method="get" action="?f=search.php"><input name="search" placeholder="rechercher"/><input value="Go!" type="submit"/></form>
 <?php if($lastPost != null){
     ?>
 <h2>Dernier post : </h2>
